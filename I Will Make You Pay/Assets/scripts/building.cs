@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class building : MonoBehaviour {
-    public float value;
-    public float maxHealth;
+    public float value = 2000;
+    public float maxHealth = 20;
     public float currentHealth;
 
     // Use this for initialization
@@ -14,7 +14,14 @@ public class building : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        currentHealth -= col.gameObject.GetComponent<bullet>().damage;
+        if (col.gameObject.tag == "p1")
+        {
+            currentHealth -= col.gameObject.GetComponent<bullet>().damage;
+        }
+        else if (col.gameObject.tag == "p2")
+        {
+            currentHealth -= col.gameObject.GetComponent<bullet2>().damage;
+        }
         // only take penalities when a building is completely destroyed
         if (currentHealth <= 0)
         {

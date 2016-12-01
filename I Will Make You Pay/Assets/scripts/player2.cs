@@ -9,7 +9,7 @@ public class player2 : MonoBehaviour
     public float currentHealth;
     public float funds;
     public static player2 main;
-    public bullet bullet;
+    public bullet2 bullet;
     // Use this for initialization
     void Start()
     {
@@ -23,7 +23,7 @@ public class player2 : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            myTransform.position += myTransform.forward * Time.deltaTime * moveSpeed;
+            myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
             Vector3 lookPoint = new Vector3(0, 0, 90);
             transform.rotation = Quaternion.LookRotation(lookPoint);
         }
@@ -32,26 +32,26 @@ public class player2 : MonoBehaviour
         {
             Vector3 lookPoint = new Vector3(0, 0, -90);
             transform.rotation = Quaternion.LookRotation(lookPoint);
-            myTransform.position += myTransform.forward * Time.deltaTime * moveSpeed;
+            myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
         }
 
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             Vector3 lookPoint = new Vector3(-90, 0, 0);
             transform.rotation = Quaternion.LookRotation(lookPoint);
-            myTransform.position += myTransform.forward * Time.deltaTime * moveSpeed;
+            myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
         }
 
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             Vector3 lookPoint = new Vector3(90, 0, 0);
             transform.rotation = Quaternion.LookRotation(lookPoint);
-            myTransform.position += myTransform.forward * Time.deltaTime * moveSpeed;
+            myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
         }
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             bullet.direction = transform.forward;
-            Instantiate(bullet, transform.position + transform.forward, transform.rotation);
+            Instantiate(bullet, transform.position, transform.rotation);
         }
     }
     void OnCollisionEnter(Collision col)
