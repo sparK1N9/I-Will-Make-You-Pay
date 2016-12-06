@@ -9,11 +9,14 @@ public class bullet2 : MonoBehaviour
 
     void Update()
     {
-        transform.position += direction.normalized * Time.deltaTime * speed;
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 
     void OnCollisionEnter(Collision col)
     {
-        Destroy(gameObject);
+        if (col.gameObject.tag == "Untagged" || col.gameObject.tag == "p1" || col.gameObject.tag == "Finish")
+        {
+            Destroy(gameObject);
+        }
     }
 }

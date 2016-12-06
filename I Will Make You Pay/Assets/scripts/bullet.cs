@@ -7,11 +7,14 @@ public class bullet : MonoBehaviour {
     public float speed = 5;
 
 	void Update () {
-        transform.position += direction.normalized * Time.deltaTime * speed;
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 
     void OnCollisionEnter(Collision col)
     {
-        Destroy(gameObject);
+        if (col.gameObject.tag == "Untagged" || col.gameObject.tag == "p2" || col.gameObject.tag == "Finish")
+        {
+            Destroy(gameObject);
+        }
     }
 }

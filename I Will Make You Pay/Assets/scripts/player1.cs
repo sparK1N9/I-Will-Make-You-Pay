@@ -22,34 +22,34 @@ public class player1 : MonoBehaviour {
         if (Input.GetKey(KeyCode.W))
         {
             myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
-            Vector3 lookPoint = new Vector3(0, 0, 90);
+            Vector3 lookPoint = new Vector3(90, 0, 0);
             transform.rotation = Quaternion.LookRotation(lookPoint);
         }
 
         else if (Input.GetKey(KeyCode.S))
-        {
-            Vector3 lookPoint = new Vector3(0, 0, -90);
-            transform.rotation = Quaternion.LookRotation(lookPoint);
-            myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
-        }
-
-        else if (Input.GetKey(KeyCode.A))
         {
             Vector3 lookPoint = new Vector3(-90, 0, 0);
             transform.rotation = Quaternion.LookRotation(lookPoint);
             myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
         }
 
+        else if (Input.GetKey(KeyCode.A))
+        {
+            Vector3 lookPoint = new Vector3(0, 0, 90);
+            transform.rotation = Quaternion.LookRotation(lookPoint);
+            myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
+        }
+
         else if (Input.GetKey(KeyCode.D))
         {
-            Vector3 lookPoint = new Vector3(90, 0, 0);
+            Vector3 lookPoint = new Vector3(0, 0, -90);
             transform.rotation = Quaternion.LookRotation(lookPoint);
             myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             bullet.direction = transform.forward;
-            Instantiate(bullet, transform.position, transform.rotation);
+            Instantiate(bullet, transform.position + myTransform.forward.normalized, transform.rotation);
         }
     }
     void OnCollisionEnter(Collision col)

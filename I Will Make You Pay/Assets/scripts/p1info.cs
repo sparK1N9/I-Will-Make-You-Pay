@@ -11,7 +11,7 @@ public class p1info : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        text = "$" + player1.main.funds.ToString("N2");
+        text = "$" + player1.main.funds.ToString("N2") + "\n";
         text += "HP: " + player1.main.currentHealth;
         GetComponent<Text>().text = text;
     }

@@ -24,27 +24,27 @@ public class player2 : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
-            Vector3 lookPoint = new Vector3(0, 0, 90);
+            Vector3 lookPoint = new Vector3(90, 0, 0);
             transform.rotation = Quaternion.LookRotation(lookPoint);
         }
 
         else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            Vector3 lookPoint = new Vector3(0, 0, -90);
-            transform.rotation = Quaternion.LookRotation(lookPoint);
-            myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
-        }
-
-        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             Vector3 lookPoint = new Vector3(-90, 0, 0);
             transform.rotation = Quaternion.LookRotation(lookPoint);
             myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
         }
 
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            Vector3 lookPoint = new Vector3(0, 0, 90);
+            transform.rotation = Quaternion.LookRotation(lookPoint);
+            myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
+        }
+
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            Vector3 lookPoint = new Vector3(90, 0, 0);
+            Vector3 lookPoint = new Vector3(0, 0, -90);
             transform.rotation = Quaternion.LookRotation(lookPoint);
             myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
         }
