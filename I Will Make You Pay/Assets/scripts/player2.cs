@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class player2 : MonoBehaviour
 {
@@ -7,7 +8,6 @@ public class player2 : MonoBehaviour
     public float moveSpeed;
     public float maxHealth;
     public float currentHealth;
-    public float funds;
     public static player2 main;
     public bullet2 bullet;
     // Use this for initialization
@@ -23,9 +23,9 @@ public class player2 : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
             Vector3 lookPoint = new Vector3(90, 0, 0);
             transform.rotation = Quaternion.LookRotation(lookPoint);
+            myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
         }
 
         else if (Input.GetKey(KeyCode.DownArrow))
@@ -48,10 +48,10 @@ public class player2 : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(lookPoint);
             myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
         }
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
         {
             bullet.direction = transform.forward;
-            Instantiate(bullet, transform.position, transform.rotation);
+            Instantiate(bullet, transform.position + myTransform.forward.normalized, transform.rotation);
         }
     }
     void OnCollisionEnter(Collision col)
@@ -62,7 +62,15 @@ public class player2 : MonoBehaviour
             if (currentHealth <= 0)
             {
                 Destroy(gameObject);
+                SceneManager.LoadScene("game");
+                system.main.score1++;
+                system.main.funds1 += 2000;
+                system.main.funds2 += 5000;
             }
+        }
+        else
+        {
+            myTransform.position -= myTransform.forward.normalized * .2f;
         }
     }
 }

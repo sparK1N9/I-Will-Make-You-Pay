@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class building : MonoBehaviour {
-    public float value = 2000;
-    public float maxHealth = 20;
+    public float value;
+    public float maxHealth;
     public float currentHealth;
 
     // Use this for initialization
@@ -27,11 +27,11 @@ public class building : MonoBehaviour {
         {
             if (col.gameObject.tag == "p1")
             {
-                player1.main.funds -= value;
+                system.main.funds1 -= value;
             }
             else if (col.gameObject.tag == "p2")
             {
-                player2.main.funds -= value;
+                system.main.funds2 -= value;
             }
             Destroy(gameObject);
         }

@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class bullet : MonoBehaviour {
-    public float damage = 5;
+    public float damage;
     public Vector3 direction;
     public float speed = 5;
 

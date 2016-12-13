@@ -1,29 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class player1 : MonoBehaviour {
     Transform myTransform;
     public float moveSpeed;
-    public float maxHealth;
-    public float currentHealth;
-    public float funds;
     public static player1 main;
     public bullet bullet;
-    // Use this for initialization
+    public float currentHealth;
+    public float maxHealth;
+
     void Start () {
         myTransform = GetComponent<Transform>();
         currentHealth = maxHealth;
         main = this;
     }
 	
-	// changing position directly won't with colliders
 	void Update ()
     {
         if (Input.GetKey(KeyCode.W))
         {
-            myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
             Vector3 lookPoint = new Vector3(90, 0, 0);
             transform.rotation = Quaternion.LookRotation(lookPoint);
+            myTransform.position += myTransform.forward.normalized * Time.deltaTime * moveSpeed;
         }
 
         else if (Input.GetKey(KeyCode.S))
@@ -60,7 +59,15 @@ public class player1 : MonoBehaviour {
             if (currentHealth <= 0)
             {
                 Destroy(gameObject);
+                SceneManager.LoadScene("game");
+                system.main.score2++;
+                system.main.funds2 += 2000;
+                system.main.funds1 += 5000;
             }
+        }
+        else
+        {
+            myTransform.position -= myTransform.forward.normalized * .2f;
         }
     }
 }
