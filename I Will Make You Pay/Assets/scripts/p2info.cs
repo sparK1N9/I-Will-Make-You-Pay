@@ -9,7 +9,7 @@ public class p2info : MonoBehaviour {
     void Update()
     {
         text = "$" + system.main.funds2.ToString("N2") + "\n";
-        text += "HP: " + player2.main.currentHealth;
+        text += "HP: " + player2.main.currentHealth/5;
         GetComponent<Text>().text = text;
     }
 }
