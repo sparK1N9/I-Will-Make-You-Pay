@@ -33,6 +33,7 @@ public class building : MonoBehaviour {
             {
                 system.main.funds2 -= value;
             }
+            system.main.bu = true;
             Destroy(gameObject);
         }
     }

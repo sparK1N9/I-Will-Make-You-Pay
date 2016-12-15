@@ -10,7 +10,8 @@ public class player2 : MonoBehaviour
     public float currentHealth;
     public static player2 main;
     public bullet2 bullet;
-    // Use this for initialization
+    public AudioSource sfxSource;
+
     void Start()
     {
         myTransform = GetComponent<Transform>();
@@ -52,6 +53,7 @@ public class player2 : MonoBehaviour
         {
             bullet.direction = transform.forward;
             Instantiate(bullet, transform.position + myTransform.forward.normalized, transform.rotation);
+            sfxSource.Play();
         }
     }
     void OnCollisionEnter(Collision col)
@@ -61,11 +63,9 @@ public class player2 : MonoBehaviour
             currentHealth -= col.gameObject.GetComponent<bullet>().damage;
             if (currentHealth <= 0)
             {
+                system.main.up1 = true;
                 Destroy(gameObject);
                 SceneManager.LoadScene("game");
-                system.main.score1++;
-                system.main.funds1 += 2000;
-                system.main.funds2 += 5000;
             }
         }
         else
