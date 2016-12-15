@@ -100,7 +100,7 @@ public class system : MonoBehaviour
             win2.Play();
             tx[0].enabled = false;
             ui.enabled = false;
-            SceneManager.LoadScene("start", LoadSceneMode.Single);
+            SceneManager.LoadScene("start");
             p2w.enabled = true;
             i = 2;
         }
@@ -108,6 +108,7 @@ public class system : MonoBehaviour
         {
             p2w.enabled = p1w.enabled = false;
             st.enabled = true;
+            bgm.Play();
             i = 0;
             score1 = score2 = 0;
             funds1 = funds2 = 9001;
