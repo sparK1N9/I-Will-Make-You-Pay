@@ -52,7 +52,7 @@ public class player2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
         {
             bullet.direction = transform.forward;
-            Instantiate(bullet, transform.position + myTransform.forward.normalized, transform.rotation);
+            Instantiate(bullet, transform.position + myTransform.forward.normalized / 2, transform.rotation);
             sfxSource.Play();
         }
     }

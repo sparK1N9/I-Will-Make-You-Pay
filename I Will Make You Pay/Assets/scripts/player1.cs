@@ -49,7 +49,7 @@ public class player1 : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             bullet.direction = transform.forward;
-            Instantiate(bullet, transform.position + myTransform.forward.normalized, transform.rotation);
+            Instantiate(bullet, transform.position + myTransform.forward.normalized / 2, transform.rotation);
             sfxSource.Play();
         }
     }
