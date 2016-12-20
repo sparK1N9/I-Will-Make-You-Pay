@@ -4,9 +4,9 @@ using System.Collections;
 public class CarSpawnManager: MonoBehaviour
 {
 //	public player1 currentHealth;
-	public GameObject car; 
 	public float spawnTime = 0.5f; 
 	public Transform[] spawnPoints; 
+	public Transform[] vehicleTypes;
 
 
 	void Start ()
@@ -22,9 +22,9 @@ public class CarSpawnManager: MonoBehaviour
 //			return;
 //		}
 			
-
+		int vehicleTypeIndex = Random.Range (0, vehicleTypes.Length);
 		int spawnPointIndex = Random.Range (0, spawnPoints.Length);
 
-		Instantiate (car, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+		Instantiate (vehicleTypes[vehicleTypeIndex].gameObject, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].localRotation);
 	}
 }

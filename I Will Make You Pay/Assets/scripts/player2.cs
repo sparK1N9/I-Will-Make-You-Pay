@@ -75,7 +75,7 @@ public class player2 : MonoBehaviour
 
 		if (col.gameObject.tag == "vehicle") {
 
-			currentHealth -= col.gameObject.GetComponent<car> ().damage;
+			currentHealth -= 5;
 
 			if (currentHealth <= 0)
 			{
