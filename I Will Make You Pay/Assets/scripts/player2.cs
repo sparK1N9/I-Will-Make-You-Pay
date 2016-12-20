@@ -72,5 +72,16 @@ public class player2 : MonoBehaviour
         {
             myTransform.position -= myTransform.forward.normalized * .2f;
         }
+
+		if (col.gameObject.tag == "vehicle") {
+
+			currentHealth -= col.gameObject.GetComponent<car> ().damage;
+
+			if (currentHealth <= 0)
+			{
+				system.main.up1 = true;
+				Destroy(gameObject);
+			}
+		}
     }
 }

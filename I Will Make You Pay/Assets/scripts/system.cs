@@ -54,7 +54,7 @@ public class system : MonoBehaviour
         if (up2)
         {
             trans2.Play();
-            score2++;
+            score1++;
             funds2 += 2000;
             funds1 += 5000;
             StartCoroutine(HitPause(1.0f));
@@ -64,7 +64,7 @@ public class system : MonoBehaviour
         else if (up1)
         {
             trans.Play();
-            score1++;
+            score2++;
             funds1 += 2000;
             funds2 += 5000;
             StartCoroutine(HitPause(1.0f));
@@ -86,7 +86,7 @@ public class system : MonoBehaviour
             st.enabled = false;
             ui.enabled = true;
         }
-        if ((score1 == 5 || funds2 <= 0) && i != 2)
+        if ((score1 == 5 || funds1 <= 0) && i != 2)
         {
             win1.Play();
             tx[0].enabled = false;
@@ -95,7 +95,7 @@ public class system : MonoBehaviour
             p1w.enabled = true;
             i = 2;
         }
-        else if ((score2 == 5 || funds1 <= 0) && i != 2)
+        else if ((score2 == 5 || funds2 <= 0) && i != 2)
         {
             win2.Play();
             tx[0].enabled = false;
@@ -117,8 +117,8 @@ public class system : MonoBehaviour
         }
         if (i != 0)
         {
-            text = score1.ToString("N0") + "\t\t\t\t\t\t\t";
-            text += score2.ToString("N0");
+            text = score2.ToString("N0") + "\t\t\t\t\t\t\t";
+            text += score1.ToString("N0");
             tx[0].text = text;
         }
     }

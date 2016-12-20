@@ -14,9 +14,6 @@ public class bullet2 : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Untagged" || col.gameObject.tag == "p1" || col.gameObject.tag == "Finish")
-        {
-            Destroy(gameObject);
-        }
+		Destroy(gameObject);
     }
 }
