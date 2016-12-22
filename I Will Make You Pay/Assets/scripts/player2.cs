@@ -11,6 +11,7 @@ public class player2 : MonoBehaviour
     public static player2 main;
     public bullet2 bullet;
     public AudioSource sfxSource;
+    public GameObject boom;
 
     void Start()
     {
@@ -64,8 +65,8 @@ public class player2 : MonoBehaviour
             if (currentHealth <= 0)
             {
                 system.main.up1 = true;
+                Instantiate(boom, transform.position, transform.rotation);
                 Destroy(gameObject);
-                SceneManager.LoadScene("game");
             }
         }
         else
@@ -80,7 +81,8 @@ public class player2 : MonoBehaviour
 			if (currentHealth <= 0)
 			{
 				system.main.up1 = true;
-				Destroy(gameObject);
+                Instantiate(boom, transform.position, transform.rotation);
+                Destroy(gameObject);
 			}
 		}
     }

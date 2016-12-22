@@ -6,8 +6,9 @@ public class back : MonoBehaviour {
 	public float value;
 	public float maxHealth;
 	public float currentHealth;
+    public GameObject boom;
 
-	public float damage;
+    public float damage;
 	public Vector3 direction;
 	public float speed = 5; 
 
@@ -53,7 +54,8 @@ public class back : MonoBehaviour {
 				system.main.funds2 -= value;
 			}
 			system.main.bu = true;//sound effect
-			Destroy(gameObject);
+            Instantiate(boom, transform.position, transform.rotation);
+            Destroy(gameObject);
 		}
 			
 			

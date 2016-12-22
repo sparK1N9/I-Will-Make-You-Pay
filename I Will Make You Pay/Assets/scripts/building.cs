@@ -5,6 +5,7 @@ public class building : MonoBehaviour {
     public float value;
     public float maxHealth;
     public float currentHealth;
+    public GameObject boom;
 
     // Use this for initialization
     void Start()
@@ -34,6 +35,7 @@ public class building : MonoBehaviour {
                 system.main.funds2 -= value;
             }
             system.main.bu = true;
+            Instantiate(boom, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

@@ -10,6 +10,7 @@ public class player1 : MonoBehaviour {
     public float currentHealth;
     public float maxHealth;
     public AudioSource sfxSource;
+    public GameObject boom;
 
     void Start () {
         myTransform = GetComponent<Transform>();
@@ -61,6 +62,7 @@ public class player1 : MonoBehaviour {
             if (currentHealth <= 0)
             {
                 system.main.up2 = true;
+                Instantiate(boom, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
         }
@@ -76,7 +78,8 @@ public class player1 : MonoBehaviour {
 			if (currentHealth <= 0)
 			{
 				system.main.up2 = true;
-				Destroy(gameObject);
+                Instantiate(boom, transform.position, transform.rotation);
+                Destroy(gameObject);
 			}
 		}
     }
